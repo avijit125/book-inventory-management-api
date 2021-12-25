@@ -1,4 +1,4 @@
-**STUDENT MANAGMENT API**
+**BOOK INVENTORY MANAGMENT API**
 
 ## Installation
 
@@ -39,7 +39,7 @@ Install my-project with npm
 #### TO SIGNUP
 
 ```http
-  PUT /auth/signup
+  POST /auth/signup
 ```
 
 | Parameter | Type     | Description                       |
