@@ -9,15 +9,15 @@ const StoresSchema = new Schema({
   desc:{
     type: String,
 },
-timing: {
-    type: String,
-},
 createdAt:{
     type: Date,
     default: Date.now()
 },
 book:[{
-    type: String,
+    name:{type:String},
+    desc:{type:String},
+    genre:{type:String},
+    rating:{type: Number}
 
 }],
 createdBy:[

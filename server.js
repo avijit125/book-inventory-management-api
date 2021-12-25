@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const databaseConnection = require('./db/conn.js')
 
 const authRoutes = require('./routes/auth.js');
-const classRoutes = require('./routes/classes.js')
+const storesRoutes = require('./routes/store.js')
 
 // initialized app
 const app = express()
@@ -26,7 +26,7 @@ app.use((error, req, res, next) => {
 
   // register the routes
 app.use('/auth', authRoutes);
-app.use('/store', classRoutes);
+app.use('/store', storesRoutes);
 
 const PORT = process.env.PORT || 3000
 

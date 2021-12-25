@@ -1,5 +1,28 @@
 **STUDENT MANAGMENT API**
 
+## Installation
+
+Install my-project with npm 
+
+```bash
+  npm install 
+  yarn
+```
+
+## SETUP .env FILE
+```bash
+ PORT = 8000
+ DATABASE_URL = "mongodb://localhost:27017/bookinventorys"
+```
+
+## TO  EXICUTE CODE
+
+```bash
+  npm start
+  yarn start
+```
+    
+
 
 ## API Reference
 
@@ -24,36 +47,36 @@
 | `nothing`      | `string` | this method helps you to signup |
 
 ```http
-  GET /class
+  GET /store/all
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `role` `token`     | `string` | this method helps you get class details |
+| `role` `token`     | `string` | this method helps you get store book inventory details |
 
 
 ```http
-  POST /class
+  POST /store
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `role` `token`     | `string` | this method helps you create class (only for instructor) |
+| `role` `token`     | `string` | this method helps you create store (only for seller) |
 
 ```http
-  PUT /class
+  PUT /store/:id/?value=
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `role` `token`     | `string` | this method helps you update class (only for instructor) |
+| `role` `token`     | `string` | this method helps you update inventory book (only for seller) |
 
 ```http
-  DELETE /class
+  DELETE /store/?id=
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `role` `token`     | `string` | this method helps you delete class (only for instructor) |
+| `role` `token`     | `string` | this method helps you delete inventory (only for seller) |
 
   

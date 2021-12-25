@@ -21,11 +21,13 @@ exports.createStore = async(req,res,next)=>{
         //destructuring the body
         const name = req.body.name
         const desc = req.body.desc
-        const timing = req.body.timimg
+        const createdAt = req.body.createdAt
+        const book = req.body.book
+        const createdBy = req.body.createdBy
         //storing in database
-        const updatedClass = new Stores({name,desc,timing})
-        await updatedClass.save()
-        return res.status(201).json({ message: 'Class created!', updatedClass})
+        const updatedStore = new Stores({name,desc,createdAt,book,createdBy})
+        await updatedStore.save()
+        return res.status(201).json({ message: 'book created!', updatedStore})
 
     } catch (err) {
        if (!err.statusCode) {
@@ -39,21 +41,15 @@ exports.createStore = async(req,res,next)=>{
 exports.updateStore = async(req,res,next)=>{
     try {
         const id = req.params.id
-        if(req.body.name){
-            const name = req.body.name
-            await Stores.findByIdAndUpdate(id,{name})
-            return res.status(202).json({ message: 'Class updated!'})
-        }
-        if(req.body.desc){
-            const desc = req.body.desc
-            await Stores.findByIdAndUpdate(id,{desc})
-            return res.status(202).json({ message: 'Class updated!'})
-        }
-        if(req.body.timing){
-            const timing = req.body.timing
-            await Stores.findByIdAndUpdate(id,{timing})
-            return res.status(202).json({ message: 'Class updated!'})
-        }
+        const value = req.query.value 
+        const update = await Stores.updateOne({"book._id":id},{$set:{"book.$.name": value}})
+            if(update){
+
+             res.status(202).json({ message: 'book updated!'})
+            }else{
+                res.status(500).json({ message: 'book not updated!'})
+            }
+       
 
     } catch (err) {
        if (!err.statusCode) {
@@ -67,7 +63,7 @@ exports.updateStore = async(req,res,next)=>{
 exports.deleteStore = async(req,res,next)=>{
     try {
         await Stores.findByIdAndDelete(req.query['id'])
-        return res.status(202).json({ message: 'Class deleted!'})
+        return res.status(202).json({ message: 'inventory deleted!'})
 
     } catch (err) {
        if (!err.statusCode) {

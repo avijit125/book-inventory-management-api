@@ -22,9 +22,9 @@ const userSchema = new Schema({
   role: {
     type: String,
   },
-  clasess: [{
+  store: [{
     type: Schema.Types.ObjectId,
-    ref: 'Class'
+    ref: 'Store'
   }]
 });
 
